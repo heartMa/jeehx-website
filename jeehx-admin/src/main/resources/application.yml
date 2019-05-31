@@ -1,0 +1,40 @@
+# Tomcat配置
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8080
+  servlet:
+    context-path: /jeehx-admin
+#mybatis配置
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  #按驼峰命名规则自动匹配到实体类上,不需要用别名
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.jeehx.modules.*.entity
+      
+spring:
+  profiles:
+    active: dev
+  # jetbrick模板配置
+  jetbrick:
+    template:
+      # 是否启用页面缓存
+      cache: false
+      # 页面默认编码方式，默认utf-8
+      charset: UTF-8
+      # 该属性必须配置为true，不然不会加载改视图处理器
+      # 没有特别要求其他默认即可
+      enabled: true
+      # 该试图处理器的优先级，默认最低
+      order: 1
+      # 视图类型，默认text/html
+      content-type: text/html
+      # 默认 templates/ 
+      prefix: templates/
+      # 默认 .html
+      suffix: .html
+      # 一个map配置集合
+      config:
+        jetx.autoscan.packages: cn.lkangle.jet.methods
